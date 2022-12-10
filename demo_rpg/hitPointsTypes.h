@@ -2,3 +2,4 @@
 #include <cstdint>
 
 typedef std::uint16_t hpType;
+typedef std::uint16_t stattype;

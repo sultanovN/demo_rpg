@@ -27,9 +27,9 @@ public:
 		return true;
 	}
 
-	hpType getMaxHp() { return m_max_hp; }
+	hpType getMaxHp() const { return m_max_hp; }
 
-	hpType getCurrentHp() { return m_current_hp; }
+	hpType getCurrentHp() const { return m_current_hp; }
 
 	void takeDamage(hpType damage)
 	{
