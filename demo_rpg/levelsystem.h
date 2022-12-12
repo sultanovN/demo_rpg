@@ -1,22 +1,35 @@
 #pragma once
 #include <cstdint>
+typedef std::uint64_t exptype;
+typedef std::uint16_t leveltype;
 
 class LevelSystem
 {
 public:
 	LevelSystem()
-		: m_current_level{1u}, m_current_exp{0u}, m_level_up_available{0}
+		: m_current_level{1u}, m_current_exp{0u}, m_exp_to_next_level{100u}
 	{
 
 	}
 
-	void gainExp(std::uint64_t gained_exp)
+	void gainExp(exptype gained_exp)
 	{
 		m_current_exp += gained_exp;
+		checkIfLeveled();
 	}
 
 protected:
-	std::uint16_t m_current_level;
-	std::uint64_t m_current_exp;
-	std::uint8_t m_level_up_available;
+	leveltype m_current_level;
+	exptype m_current_exp;
+	exptype m_exp_to_next_level;
+
+	void checkIfLeveled()
+	{
+		if (m_current_exp > m_exp_to_next_level)
+		{
+			++m_current_level;
+			m_exp_to_next_level *= 2u;
+		}
+			
+	}
 };
